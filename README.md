@@ -1,5 +1,3 @@
-# JEXAssesment
-
 Tijdens dit assessment heb ik gekozen om voornamelijk mijn focus en nadruk te leggen op de frontend. Hiermee wil ik mijn frontend vaardigheden demonstreren.  
 Tijdens dit assessment ben ik zeker ook met nieuwe aspecten van Angular in aanmerking gekomen. Het was een zeer boeiende en educatieve uitdaging! 
 Dit voelde als een nieuwe korte challenge die ik heb weten te overwinnen, mede dankzij mijn REACT skills heb ik mijn weg binnen no-time in Angular kunnen vinden.

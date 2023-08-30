@@ -1,0 +1,65 @@
+<a routerLink="/" class="arrow-left"><i class="arrow" title="arrow icon"></i>Go back</a>
+
+<div *ngIf="dataService.isLoggedIn; else loggedOutTemplate">
+    <div class="card">
+      <div class="card-header">
+        <h3>Details for {{ company.name }}</h3>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>ID: </strong> {{ company.id }}</li>
+        <li class="list-group-item"><strong>Country: </strong>{{ company.country }}</li>
+        <li class="list-group-item"><strong>City: </strong> {{ company.city }}</li>
+        <li class="list-group-item"><strong>Address: </strong> {{ company.address }}</li>
+        <li class="list-group-item"><strong>ZIP: </strong> {{ company.zip }}</li>
+      </ul>
+  </div>
+  <button [routerLink]="['/edit-company', company.id]" class="btn btn-primary mt-3" ><i class="bi bi-pen"></i> Edit</button>
+  <button (click)="deleteCompany(company.id)" class="btn btn-danger mt-3 ms-2"><i class="bi bi-trash"></i> Delete</button>
+    
+  <div class="row mt-5">
+    <div class="col-sm-6 mb-3 mb-sm-0" *ngFor="let vacancy of vacancies">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ vacancy.title }}</h3>
+          <p class="card-text">{{ vacancy.type }}</p>
+          <p class="card-text">{{ vacancy.location }}</p>
+          <p class="card-text">{{ vacancy.isActive ? "Active" : "Inactive" }}</p>
+          <p class="card-text">{{ vacancy.salary }}</p>
+          <p class="card-text">{{ vacancy.description | slice:0:100 }}...</p>
+          <a [routerLink]="['/detail-vacancy', vacancy.id]" class="btn btn-primary">View vacancy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loggedOutTemplate>
+  <div class="card">
+    <div class="card-header">
+      <h3>Details for {{ company.name }}</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>ID: </strong> {{ company.id }}</li>
+      <li class="list-group-item"><strong>Country: </strong>{{ company.country }}</li>
+      <li class="list-group-item"><strong>City: </strong> {{ company.city }}</li>
+      <li class="list-group-item"><strong>Address: </strong> {{ company.address }}</li>
+      <li class="list-group-item"><strong>ZIP: </strong> {{ company.zip }}</li>
+    </ul>
+</div>
+  
+<div class="row mt-5">
+  <div class="col-sm-6 mb-3 mb-sm-0" *ngFor="let vacancy of vacancies"> 
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ vacancy.title }}</h3>
+        <p class="card-text">{{ vacancy.type }}</p>
+        <p class="card-text">{{ vacancy.location }}</p>
+        <p class="card-text">{{ vacancy.isActive ? "Active" : "Inactive" }}</p>
+        <p class="card-text">{{ vacancy.salary }}</p>
+        <p class="card-text">{{ vacancy.description | slice:0:100 }}...</p>
+        <a [routerLink]="['/detail-vacancy', vacancy.id]" class="btn btn-primary">View vacancy</a>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

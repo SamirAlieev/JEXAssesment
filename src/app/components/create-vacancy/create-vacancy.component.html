@@ -1,0 +1,50 @@
+<h2>Add new vacancy</h2>
+<p>Please fill in the form below to add your new vacancy.</p>
+<form [formGroup]="vacancyForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Vacancy title</label>
+    <input formControlName="title" id="title" class="form-control" required="">
+  </div>
+  <div class="row mt-4">
+    <div class="form-group col-md-6">
+      <label for="description">Description</label>
+      <input formControlName="description" id="description" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="type">type</label>
+      <input formControlName="type" id="type" class="form-control">
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="form-group col-md-6">
+      <label for="location">location</label>
+      <input formControlName="location" id="location" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="isActive">isActive</label>
+      <input formControlName="isActive" id="isActive" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="salary">salary</label>
+    <input formControlName="salary" id="salary" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="companyId">Company</label>
+    <select formControlName="companyId" id="companyId" class="form-control">
+      <option value="" disabled>Select a company</option>
+      <option *ngFor="let company of companies" [value]="company.id"> <!-- Simply loop through the companies, so you can select one to add the vacancy to, nothing too fancy -->
+        {{ company.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!vacancyForm.valid">Add vacancy</button>
+    <button routerLink="/" type="button" class="btn btn-danger mt-4 ms-2">Cancel</button>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</form>

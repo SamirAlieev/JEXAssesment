@@ -1,0 +1,39 @@
+<form [formGroup]="vacancyForm" (ngSubmit)="updateVacancy()">
+    <h3 *ngIf="vacancy">Edit {{ vacancy.title }}</h3>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" formControlName="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" formControlName="location" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" id="type" formControlName="type" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="textarea" id="description" formControlName="description" class="form-control"></textarea>
+      </div>      
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="text" id="salary" formControlName="salary" class="form-control" aria-label="Amount (to the nearest dollar)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Active vacancy?</label>
+        <div class="form-group">
+            <label class="switch" *ngIf="vacancy">
+            <input type="checkbox" formControlName="isActive" (change)="toggleVacancyStatus()">
+            <span class="slider"></span>
+        </label></div>
+            
+      </div>
+      <div class="col-md-12">
+        <button type="submit" [disabled]="vacancyForm.pristine" class="btn btn-primary mt-4">Update</button>
+        <button routerLink="/" type="button" class="btn btn-danger mt-4 ms-2">Cancel</button>
+      </div>
+</form>

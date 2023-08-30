@@ -1,0 +1,21 @@
+<a routerLink="/" class="arrow-left"><i class="arrow" title="arrow icon"></i>Go back</a>
+
+<div class="card">
+    <div class="card-header">
+      <h3>Details for {{ vacancy.title }} - {{ selectedCompany.name }}</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>ID: </strong>{{ vacancy.id }}</li>
+      <li class="list-group-item"><strong>Company: </strong> {{ selectedCompany.name }}</li>
+      <li class="list-group-item"><strong>Title:</strong> {{ vacancy.title }}</li>
+      <li class="list-group-item"><strong>Location: </strong> {{ vacancy.location }}</li>
+      <li class="list-group-item"><strong>Type: </strong> {{ vacancy.type }}</li>
+      <li class="list-group-item"><strong>Description: </strong> {{ vacancy.description }}</li>
+      <li class="list-group-item"><strong>Active: </strong> {{ vacancy.isActive }}</li>
+    </ul>
+</div>
+<div *ngIf="dataService.isLoggedIn">
+  <button [routerLink]="['/edit-vacancy', vacancy.id]" class="btn btn-primary mt-3" ><i class="bi bi-pen"></i> Edit</button>
+  <button (click)="deleteVacancy(vacancy.id)" class="btn btn-danger mt-3 ms-2"><i class="bi bi-trash"></i> Delete</button>
+</div>
+  
